@@ -15,7 +15,9 @@ equals.addEventListener("click", ()=>{
     let result = operate(operationArray[0], operationArray[1], operationArray[2]);
     input.value = result;
     operationArray.length = 0;
-    if(!+result == NaN) operationArray.push(result);
+    console.log(result);
+    if(!isNaN(result)) operationArray.push(result);
+    else{console.log("not a number")}
 });
 ac.addEventListener("click", ()=>{
     input.value = "";
@@ -36,7 +38,7 @@ function operate (a, operator, b){
         case("+"):return a+b;
         case("-"):return a-b;
         case("X"):return a*b;
-        case("/"):return a/b;
+        case("/"):return (Math.round(a/b*100000000000000))/100000000000000;
         default:{
             console.log("illegal operator");
             return null;
